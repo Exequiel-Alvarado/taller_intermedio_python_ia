@@ -8,7 +8,7 @@ Asegúrate de tener **Python 3.8 o superior** instalado.
 
 ### 1. Clonar el repositorio
 ```bash
-$ git clone <url-del-repositorio>
+$ git clone https://github.com/devjaime/taller_intermedio_python_ia.git
 $ cd <nombre-del-directorio>
 ```
 
@@ -33,10 +33,30 @@ Este proyecto requiere una API Key válida de Groq para transcribir audio y gene
 ### 2. Configuración de la base de datos
 Proporciona los siguientes detalles para conectarte a tu base de datos PostgreSQL en la barra lateral:
 
+
+- **descargar postgres**: [https://www.postgresql.org/download/](https://www.postgresql.org/download/)
 - **Host**: Dirección de tu servidor de base de datos (por defecto: `localhost`)
 - **Nombre de la base de datos**: Nombre de tu base de datos (por defecto: `postgres`)
 - **Usuario**: Usuario de la base de datos (por defecto: `postgres`)
 - **Contraseña**: Contraseña de la base de datos
+- Crear el esquema de la tabla:
+```sql
+CREATE TABLE ventas (
+    id SERIAL PRIMARY KEY,
+    producto VARCHAR(100) NOT NULL,
+    cantidad INT NOT NULL,
+    precio DECIMAL(10, 2) NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+- Crear el listado de ventas:
+```sql
+INSERT INTO ventas (producto, cantidad, precio) VALUES
+('Laptop', 5, 999.99),
+('Teclado', 10, 49.99),
+('Ratón', 15, 19.99);
+```
+
 
 ## Ejecución
 
@@ -111,3 +131,4 @@ $ pip install -r requirements.txt  # Si el archivo requirements.txt está dispon
 
 ## Licencia
 Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+
