@@ -122,6 +122,34 @@ $ pip install -r requirements.txt  # Si el archivo requirements.txt está dispon
 3. **Limitaciones**:
    - La API de Groq puede tener restricciones de tokens o latencia en solicitudes concurrentes.
 
+
+## instalaciòn docker postgress
+## Iniciar la Base de Datos con Docker
+
+Este proyecto incluye un archivo `Dockerfile` para configurar y ejecutar PostgreSQL localmente con un esquema inicial.
+
+### 1. Construir la imagen de Docker
+Ejecuta el siguiente comando en el directorio donde se encuentra el `Dockerfile`:
+```bash
+docker build -t postgres-local .
+```
+2. Ejecutar el contenedor
+Inicia el contenedor con el siguiente comando:
+```bash
+docker run -d \
+  --name postgres-container \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=postgres1 \
+  -e POSTGRES_DB=db_test \
+  -p 5433:5432 \
+  postgres-local
+```
+3. Verificar el contenedor
+Confirma que el contenedor esté ejecutándose correctamente:
+```
+docker ps
+```
+
 ## Recursos
 
 - **Documentación de Groq**: [https://console.groq.com/docs/](https://console.groq.com/docs/)
